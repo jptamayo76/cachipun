@@ -1,0 +1,31 @@
+body {
+    background: #dc3545;
+    font-family: 'Bitter', serif;
+}
+
+#navbar{
+    z-index: 1;
+}
+
+/* Seccion Jugada */
+#jugada-section {
+    display: none;
+}
+
+/* Seccion Resultado Parcial */
+#parcialresults-section {
+    display: none;
+}
+
+#parcialresults-section i {
+    width: 20vw;
+}
+
+#parcialresults-section h1 {
+    font-size: xxx-large !important;
+}
+
+/* Resultado final */
+#finalresults-section {
+    display: none;
+}

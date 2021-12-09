@@ -5,47 +5,222 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testing JS</title>
+    <title>Piedra, Papel o Tijera</title>
 
     <!-- Bootstrap 5.1.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/70ee8ba41b.js" crossorigin="anonymous"></script>
+
+    <!-- Mi CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
-    <section id="botones">
-        <div class="container mb-5">
-            <div class="container">
-                <div class="row">
-                    <h1 class="text-center my-3">Juega Cachipun & Gana Bitcoins!</h1>
-                </div>
+    <!-- NAVBAR AS TITLE -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-danger" id="navbar">
+        <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col-4">
-                        <button id="piedra" onclick="jugarPlayer(2)" type="button" class="btn btn-primary">
-                            Piedra
-                        </button>
+            <a class="navbar-brand" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Piedra, Papel o Tijera!"
+                href="#">
+                <img src="assets/img/logo.jpg" class="rounded-pill" alt="" width="200">
+            </a>
+            <span class="text-white mb-0 h1">Piedra, Papel o Tijera!</span>
+            <span id="Player1NAVscore" class="navbar-brand mb-0 h1"></span>
+            <span id="MachineNAVscore" class="navbar-brand mb-0 h3"></span>
+
+        </div>
+    </nav>
+
+    <!--Inicio sección "Rondas" -->
+    <section id="rondas-section" class="mt-5 pt-5 container">
+        <div id="Card" class="row justify-content-center">
+            <div class="card rounded-pill text-center col-10 col-xl-8 bg-warning">
+                <div class="row align-self-center align-items-center">
+                    <div class="col-md-auto">
+                        <i class="fas fa-robot fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            title="Jugamos?"></i>
                     </div>
 
-                    <div class="col-4">
-                        <button id="papel" onclick="jugarPlayer(1)" type="button" class="btn btn-secondary">
-                            Papel
-                        </button>
-                    </div>
-
-                    <div class="col-4">
-                        <button id="tijera" onclick="jugarPlayer(0)" type="button" class="btn btn-success">
-                            Tijera
-                        </button>
+                    <div class="col-md-auto">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Bienvenido Player 1!
+                            </h5>
+                            <p class="card-text">
+                                Soy "La máquina", rey del "piedra, papel o tijeras".
+                                <br>
+                                Nadie me puede ganar... Te gustaría intentarlo?
+                                <br>
+                                Ingresa el número de partidas que deseas perder.
+                            </p>
+                            <input id="rondasnumber" class="my-1" type="number" placeholder="Número de partidas" min="0"
+                                required>
+                            <button onclick="ronda();" class="btn bg-danger text-white mx-sm-auto my-1"
+                                type="button">Jugar</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
-    <section id="results-section" class="container bg-warning py-2">
-        <p class="bg-info" id="txtresults"> </p>
-        <p class="bg-success" id="txtfinalresults"> </p>
+    <!--Inicio sección "Jugada"-->
+    <section id="jugada-section" class="container-fluid mt-0 bg-warning text-center rounded-pill">
+
+        <!--Número de rondas-->
+        <span class="fs-2 text-white">Ronda </span>
+        <h2 id="Ronda" class="text-white d-inline-block"> 1</h2>
+
+        <!--Fila versus-->
+        <div class="row mb-5 pb-3 row-cols-3 text-center align-items-center">
+
+            <!--Imagen computador y puntaje-->
+            <div class="col">
+                <i class="fas fa-robot fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom" title="The machine">
+                </i>
+                <span id="Robot" class="text-white fs-1"> = 0</span>
+            </div>
+
+            <!--Versus-->
+            <div class="col">
+                <h1 class="text-white fw-bold">VS</h1>
+            </div>
+
+            <!--Imagen jugador y puntaje-->
+            <div class="col">
+                <span id="Jugador" class="text-white fs-1">0 = </span>
+                <i class="fas fa-user fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Player 1"></i>
+            </div>
+        </div>
+
+        <span class="fs-2 text-white">Seleciona tu siguiente jugada : </span>
+
+        <!--Opciones-->
+        <div class="row row-cols-1 row-cols-sm-3 text-center mt-4 mb-3 mb-sm-5">
+
+            <label class="col">
+                <button id="piedra" onclick="jugarPlayer(2)" class="btn"><i class="far fa-hand-rock fa-10x"
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Piedra"></i>
+                </button>
+            </label>
+
+            <label class="col">
+                <button id="papel" onclick="jugarPlayer(1)" class="btn"><i class="far fa-hand-paper fa-10x"
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Papel"></i>
+                </button>
+            </label>
+
+            <label class="col">
+                <button id="tijera" onclick="jugarPlayer(0)" class="btn"><i class="far fa-hand-scissors fa-10x"
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Tijera"></i>
+                </button>
+            </label>
+
+        </div>
     </section>
+    <!--Fin sección "Jugada"-->
+
+
+    <!--Inicio sección "ResultParcial"-->
+    <section id="parcialresults-section" class="container mt-5 py-4 text-center bg-info rounded-pill">
+
+        <!--Opciones seleccionadas por cada jugador-->
+        <div class="row align-self-center align-content-center align-items-center">
+
+            <!--Imagen y opción computador-->
+            <div class="col-12 col-md-4">
+                <i class="fas fa-robot fa-10x"></i>
+                <!--
+                <i id="opcionCom" class="far fa-hand-scissors fa-10x"></i>    
+                -->
+                <i id="opcionCom"></i>
+            </div>
+
+            <!--Mensaje de resultado-->
+            <div class="col-12 col-md-4">
+                <h2 id="Mensaje" class="text-white mt-2">Empate</h2>
+                <h1 class="text-white fw-bold">VS</h1>
+            </div>
+
+            <!--Imagen y opción jugador-->
+            <div class="col-12 col-md-4">
+                <i class="fas fa-user fa-10x"></i>
+                <!--
+                <i id="opcionJug" class="far fa-hand-scissors fa-10x"></i>    
+                -->
+                <i id="opcionJug"></i>
+            </div>
+        </div>
+
+    </section>
+    <!--Fin sección "ResultParcial"-->
+
+
+    <!--Inicio sección "ResultFinal"-->
+    <section id="finalresults-section" class="container mt-4 py-4">
+        <div class="row text-center align-items-center">
+
+            <!--Inicio contenido card-->
+            <div class="card bg-success py-4 rounded-pill">
+
+                <!--Título card-->
+                <div class="col-12">
+                    <h1 class="text-white">Resultados finales</h1>
+                </div>
+
+                <!--Resultados-->
+                <div id="Row" class="row text-center align-items-center">
+
+                    <!--Imagen y resultado final computador-->
+                    <div class="col">
+                        <i class="fas fa-robot fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            title="The machine"></i>
+                        <span id="RobotFinal" class="text-white fs-1"></span>
+                    </div>
+
+                    <!--Versus-->
+                    <div class="col">
+                        <h1 class="text-white fw-bold">VS</h1>
+                    </div>
+
+                    <!--Imagen y resultado final computador-->
+                    <div class="col">
+                        <span id="JugadorFinal" class="text-white fs-1"></span>
+                        <i class="fas fa-user fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            title="Player 1"></i>
+                    </div>
+
+                </div>
+
+                <!--Mensaje final-->
+                <div class="col-12 mt-5">
+                    <h1 id="MensajeFinal" class="text-white"></h1>
+                </div>
+
+                <!--Botón jugar de nuevo-->
+                <div class="col-12 mt-3">
+                    <button onclick="location.reload();" class="btn btn-outline-light">Jugar de nuevo!</button>
+                </div>
+
+            </div>
+            <!--Fin contenido card-->
+        </div>
+
+    </section>
+    <!--Fin sección "ResultFinal"-->
+
+    <!--Jquery 3.6.0-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -53,7 +228,8 @@
         crossorigin="anonymous"></script>
 
     <!-- Mi Javascript -->
-    <script src="js/script.js"></script>
+    <script src="assets/js/script.js"></script>
+
 </body>
 
 </html>
