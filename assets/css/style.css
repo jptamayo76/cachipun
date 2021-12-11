@@ -7,6 +7,10 @@ body {
     z-index: 1;
 }
 
+#rondas-section .btn:hover {
+    background-color: #573692 !important;
+}
+
 /* Seccion Jugada */
 #jugada-section {
     display: none;
@@ -17,10 +21,6 @@ body {
     display: none;
 }
 
-#parcialresults-section i {
-    width: 20vw;
-}
-
 #parcialresults-section h1 {
     font-size: xxx-large !important;
 }
@@ -28,4 +28,39 @@ body {
 /* Resultado final */
 #finalresults-section {
     display: none;
+}
+
+/* Media Queries */
+
+@media (max-width: 767px) {
+    /* Inicio */
+    #rondas-section i {
+        font-size: 4rem;
+    }    
+
+    /* Jugada */
+    #jugada-section i {
+        font-size: 1.5rem;
+    }
+
+    #jugada-section i.fa-8x {
+        font-size: 3.5rem;
+    }
+
+    /* Resultado Parcial */
+    #parcialresults-section i {
+        font-size: 3.5rem;
+    }
+
+    /* Resultado Final */
+    #finalresults-section {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 768px) {    
+    /* Resultado Final */
+    #finalresults-section {
+        font-size: 5rem;
+    }
 }

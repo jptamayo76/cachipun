@@ -25,6 +25,9 @@
 </head>
 
 <body>
+    <!--Audio con autoreproducción y loop al primer click-->
+    <audio id="Audio" autoplay loop></audio>
+
     <!-- NAVBAR AS TITLE -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-danger" id="navbar">
         <div class="container-fluid">
@@ -41,12 +44,12 @@
     </nav>
 
     <!--Inicio sección "Rondas" -->
-    <section id="rondas-section" class="mt-5 pt-5 container">
+    <section id="rondas-section" class="mt-5 container">
         <div id="Card" class="row justify-content-center">
-            <div class="card rounded-pill text-center col-10 col-xl-8 bg-warning">
+            <div class="card rounded-pill text-center col-10 col-xl-8 bg-warning p-3">
                 <div class="row align-self-center align-items-center">
                     <div class="col-md-auto">
-                        <i class="fas fa-robot fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        <i class="fas fa-robot fa-8x" data-bs-toggle="tooltip" data-bs-placement="bottom"
                             title="Jugamos?"></i>
                     </div>
 
@@ -62,9 +65,11 @@
                                 <br>
                                 Ingresa el número de partidas que deseas perder.
                             </p>
-                            <input id="rondasnumber" class="my-1" type="number" placeholder="Número de partidas" min="0"
-                                required>
+                            <input id="rondasnumber" class="my-1 me-2" type="number" placeholder="Número de partidas"
+                                min="0" required>
                             <button onclick="ronda();" class="btn bg-danger text-white mx-sm-auto my-1"
+                                data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Ingresa la cantidad de rondas y presiona el botón Jugar"
                                 type="button">Jugar</button>
                         </div>
                     </div>
@@ -74,20 +79,21 @@
     </section>
 
     <!--Inicio sección "Jugada"-->
-    <section id="jugada-section" class="container-fluid mt-0 bg-warning text-center rounded-pill">
+    <section id="jugada-section" class="container mt-1 p-5 bg-warning text-center rounded-pill">
 
         <!--Número de rondas-->
         <span class="fs-2 text-white">Ronda </span>
         <h2 id="Ronda" class="text-white d-inline-block"> 1</h2>
 
         <!--Fila versus-->
-        <div class="row mb-5 pb-3 row-cols-3 text-center align-items-center">
+        <div class="row mb-4 pb-2 row-cols-3 text-center align-items-center">
 
             <!--Imagen computador y puntaje-->
             <div class="col">
-                <i class="fas fa-robot fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom" title="The machine">
+                <i class="fas fa-robot fa-5x" data-bs-toggle="tooltip" data-bs-placement="bottom" title="The machine">
                 </i>
-                <span id="Robot" class="text-white fs-1"> = 0</span>
+                <span id="Robot" class="text-white fs-1"> =
+                    0</span>
             </div>
 
             <!--Versus-->
@@ -98,29 +104,29 @@
             <!--Imagen jugador y puntaje-->
             <div class="col">
                 <span id="Jugador" class="text-white fs-1">0 = </span>
-                <i class="fas fa-user fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Player 1"></i>
+                <i class="fas fa-user fa-5x" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Player 1"></i>
             </div>
         </div>
 
         <span class="fs-2 text-white">Seleciona tu siguiente jugada : </span>
 
         <!--Opciones-->
-        <div class="row row-cols-1 row-cols-sm-3 text-center mt-4 mb-3 mb-sm-5">
+        <div class="row row-cols-1 row-cols-sm-3 text-center mt-3">
 
             <label class="col">
-                <button id="piedra" onclick="jugarPlayer(2)" class="btn"><i class="far fa-hand-rock fa-10x"
+                <button id="piedra" onclick="jugarPlayer(2)" class="btn"><i class="far fa-hand-rock fa-8x"
                         data-bs-toggle="tooltip" data-bs-placement="top" title="Piedra"></i>
                 </button>
             </label>
 
             <label class="col">
-                <button id="papel" onclick="jugarPlayer(1)" class="btn"><i class="far fa-hand-paper fa-10x"
+                <button id="papel" onclick="jugarPlayer(1)" class="btn"><i class="far fa-hand-paper fa-8x"
                         data-bs-toggle="tooltip" data-bs-placement="top" title="Papel"></i>
                 </button>
             </label>
 
             <label class="col">
-                <button id="tijera" onclick="jugarPlayer(0)" class="btn"><i class="far fa-hand-scissors fa-10x"
+                <button id="tijera" onclick="jugarPlayer(0)" class="btn"><i class="far fa-hand-scissors fa-8x"
                         data-bs-toggle="tooltip" data-bs-placement="top" title="Tijera"></i>
                 </button>
             </label>
@@ -131,17 +137,14 @@
 
 
     <!--Inicio sección "ResultParcial"-->
-    <section id="parcialresults-section" class="container mt-5 py-4 text-center bg-info rounded-pill">
+    <section id="parcialresults-section" class="container mt-5 py-5 text-center bg-info rounded-pill">
 
         <!--Opciones seleccionadas por cada jugador-->
         <div class="row align-self-center align-content-center align-items-center">
 
             <!--Imagen y opción computador-->
             <div class="col-12 col-md-4">
-                <i class="fas fa-robot fa-10x"></i>
-                <!--
-                <i id="opcionCom" class="far fa-hand-scissors fa-10x"></i>    
-                -->
+                <i class="fas fa-robot fa-5x mx-3"></i>
                 <i id="opcionCom"></i>
             </div>
 
@@ -153,10 +156,7 @@
 
             <!--Imagen y opción jugador-->
             <div class="col-12 col-md-4">
-                <i class="fas fa-user fa-10x"></i>
-                <!--
-                <i id="opcionJug" class="far fa-hand-scissors fa-10x"></i>    
-                -->
+                <i class="fas fa-user fa-5x mx-3"></i>
                 <i id="opcionJug"></i>
             </div>
         </div>
@@ -169,7 +169,7 @@
         <div class="row text-center align-items-center">
 
             <!--Inicio contenido card-->
-            <div class="card bg-success py-4 rounded-pill">
+            <div class="card bg-success px-5 py-4 rounded-pill">
 
                 <!--Título card-->
                 <div class="col-12">
@@ -181,7 +181,7 @@
 
                     <!--Imagen y resultado final computador-->
                     <div class="col">
-                        <i class="fas fa-robot fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        <i class="fas fa-robot fa-1x" data-bs-toggle="tooltip" data-bs-placement="bottom"
                             title="The machine"></i>
                         <span id="RobotFinal" class="text-white fs-1"></span>
                     </div>
@@ -194,14 +194,14 @@
                     <!--Imagen y resultado final computador-->
                     <div class="col">
                         <span id="JugadorFinal" class="text-white fs-1"></span>
-                        <i class="fas fa-user fa-10x" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        <i class="fas fa-user fa-1x" data-bs-toggle="tooltip" data-bs-placement="bottom"
                             title="Player 1"></i>
                     </div>
 
                 </div>
 
                 <!--Mensaje final-->
-                <div class="col-12 mt-5">
+                <div class="col-12 mt-4">
                     <h1 id="MensajeFinal" class="text-white"></h1>
                 </div>
 
@@ -213,7 +213,6 @@
             </div>
             <!--Fin contenido card-->
         </div>
-
     </section>
     <!--Fin sección "ResultFinal"-->
 

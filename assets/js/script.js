@@ -4,7 +4,7 @@
 // "PIEDRA" = 2
 
 // CONSTANTES GLOBALES
-const iconoptions = ["far fa-hand-scissors fa-10x", "far fa-hand-paper fa-10x", "far fa-hand-rock fa-10x"];
+const iconoptions = ["far fa-hand-scissors fa-5x", "far fa-hand-paper fa-5x", "far fa-hand-rock fa-5x"];
 
 // VARIABLES GLOBALES
 var ciclo = 0;
@@ -21,6 +21,13 @@ function ronda() {
         $("#rondas-section").toggle('slow');
         $("#jugada-section").css("display", "block");
     }
+
+    /* Se asigna musica aleatoria */
+    let randomAudio = "assets/audio/music" + Math.floor(Math.random() * 7) + ".mp3";
+    document.getElementById("Audio").setAttribute("src", randomAudio);
+
+    /* Se ajusta volumen */
+    document.getElementById("Audio").volume = 0.01;
 }
 
 function cachipun(tiradaplayer, tiradamachine) {
