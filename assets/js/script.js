@@ -17,7 +17,7 @@ function setMusic() {
     document.getElementById("Audio").setAttribute("src", randomAudio);
 
     /* Se ajusta volumen */
-    document.getElementById("Audio").volume = 0.01;
+    document.getElementById("Audio").volume = 0.02;
 }
 
 function ronda() {
@@ -173,7 +173,7 @@ $(function () {
             document.getElementById("Audio").volume = 0.00;
         } else {
             /* Se ajusta volumen */
-            document.getElementById("Audio").volume = 0.01;
+            document.getElementById("Audio").volume = 0.02;
         }
     });
 });
