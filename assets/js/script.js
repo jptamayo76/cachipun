@@ -158,8 +158,11 @@ function jugarPlayer(tirada) {
 }
 
 $(function () {
-    $('[data-bs-toggle="popover"]').popover();
-    $('[data-bs-toggle="tooltip"]').tooltip();
+    if (!("ontouchstart" in window)) {
+
+        $('[data-bs-toggle="popover"]').popover();
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    }
 
     $('#flexSwitchCheckSilenciar').change(function (event) {
         // State has changed to checked/unchecked.
