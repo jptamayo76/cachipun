@@ -3,7 +3,7 @@ body {
     font-family: 'Bitter', serif;
 }
 
-#navbar{
+#navbar {
     z-index: 1;
 }
 
@@ -34,7 +34,6 @@ i:hover {
     background-color: #ffc107 !important;
 }
 
-
 /* Seccion Resultado Parcial */
 #parcialresults-section {
     display: none;
@@ -50,7 +49,6 @@ i:hover {
 }
 
 /* Media Queries */
-
 @media (max-width: 767px) {
     /* Inicio */
     #rondas-section i {
