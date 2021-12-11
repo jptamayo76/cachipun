@@ -7,13 +7,23 @@ body {
     z-index: 1;
 }
 
-i:hover {
-    color: #573692 !important;
-}
-
-.btn:hover {
+#navbar .btn:hover {
     background-color: #573692 !important;
     color: #FFFFFF !important;
+}
+
+#rondas-section .btn:hover {
+    background-color: #573692 !important;
+    color: #FFFFFF !important;
+}
+
+#finalresults-section .btn:hover {
+    background-color: #573692 !important;
+    color: #FFFFFF !important;
+}
+
+i:hover {
+    color: #573692 !important;
 }
 
 .form-check-input:checked {
@@ -73,11 +83,20 @@ i:hover {
     #finalresults-section {
         font-size: 1.4rem;
     }
+
+    i:hover {
+       pointer-events: none !important;
+    }
 }
 
 @media (min-width: 768px) {    
     /* Resultado Final */
     #finalresults-section {
         font-size: 5rem;
+    }
+    
+    .btn:hover {
+        background-color: #573692 !important;
+        color: #FFFFFF !important;
     }
 }
