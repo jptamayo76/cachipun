@@ -7,14 +7,33 @@ body {
     z-index: 1;
 }
 
-#rondas-section .btn:hover {
+i:hover {
+    color: #573692 !important;
+}
+
+.btn:hover {
     background-color: #573692 !important;
+    color: #FFFFFF !important;
+}
+
+.form-check-input:checked {
+    background-color: #ffc107;
+    border-color: pink;
+}
+
+.form-check-label:hover {
+    color: #FFFFFF !important;
 }
 
 /* Seccion Jugada */
 #jugada-section {
     display: none;
 }
+
+#jugada-section .btn:hover {
+    background-color: #ffc107 !important;
+}
+
 
 /* Seccion Resultado Parcial */
 #parcialresults-section {

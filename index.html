@@ -36,10 +36,18 @@
                 href="#">
                 <img src="assets/img/logo.jpg" class="rounded-pill" alt="" width="200">
             </a>
-            <span class="text-white mb-0 h1">Piedra, Papel o Tijera!</span>
-            <span id="Player1NAVscore" class="navbar-brand mb-0 h1"></span>
-            <span id="MachineNAVscore" class="navbar-brand mb-0 h3"></span>
 
+            <span class="text-white mb-0 h1">Piedra, Papel o Tijera!</span>
+
+            <form class="d-flex">
+                <button onclick="setMusic();" class="btn btn-sm btn-warning me-2" type="button">Cambiar música</button>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckSilenciar">
+                    <label class="form-check-label text-warning" for="flexSwitchCheckSilenciar">Silenciar</label>
+                </div>
+
+            </form>
         </div>
     </nav>
 
@@ -207,7 +215,9 @@
 
                 <!--Botón jugar de nuevo-->
                 <div class="col-12 mt-3">
-                    <button onclick="location.reload();" class="btn btn-outline-light">Jugar de nuevo!</button>
+                    <button onclick="location.reload();" class="btn btn-outline-light" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Te atreves?">Jugar
+                        de nuevo!</button>
                 </div>
 
             </div>

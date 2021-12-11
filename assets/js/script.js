@@ -11,6 +11,15 @@ var ciclo = 0;
 var rondas = 0;
 var contadorPlayer = 0, contadorMachine = 0;
 
+function setMusic() {
+    /* Se asigna musica aleatoria */
+    let randomAudio = "assets/audio/music" + Math.floor(Math.random() * 7) + ".mp3";
+    document.getElementById("Audio").setAttribute("src", randomAudio);
+
+    /* Se ajusta volumen */
+    document.getElementById("Audio").volume = 0.01;
+}
+
 function ronda() {
     rondas = parseInt(document.getElementById('rondasnumber').value);
 
@@ -22,12 +31,7 @@ function ronda() {
         $("#jugada-section").css("display", "block");
     }
 
-    /* Se asigna musica aleatoria */
-    let randomAudio = "assets/audio/music" + Math.floor(Math.random() * 7) + ".mp3";
-    document.getElementById("Audio").setAttribute("src", randomAudio);
-
-    /* Se ajusta volumen */
-    document.getElementById("Audio").volume = 0.01;
+    setMusic();
 }
 
 function cachipun(tiradaplayer, tiradamachine) {
@@ -95,8 +99,6 @@ function jugarPlayer(tirada) {
         cachipun(player1, machine);
 
         /* Insertar datos en elemntos html */
-        document.getElementById("Player1NAVscore").innerHTML = "Player1 : " + contadorPlayer;
-        document.getElementById("MachineNAVscore").innerHTML = "Machine : " + contadorMachine;
         document.getElementById("Ronda").innerHTML = ciclo + 1;
         document.getElementById("Robot").innerHTML = " = " + contadorMachine;
         document.getElementById("Jugador").innerHTML = contadorPlayer + " = ";
@@ -158,4 +160,17 @@ function jugarPlayer(tirada) {
 $(function () {
     $('[data-bs-toggle="popover"]').popover();
     $('[data-bs-toggle="tooltip"]').tooltip();
+
+    $('#flexSwitchCheckSilenciar').change(function (event) {
+        // State has changed to checked/unchecked.
+        var thisCheck = $(this);
+
+        if (thisCheck.is(':checked')) {
+            /* Se SILENCIA volumen */
+            document.getElementById("Audio").volume = 0.00;
+        } else {
+            /* Se ajusta volumen */
+            document.getElementById("Audio").volume = 0.01;
+        }
+    });
 });
