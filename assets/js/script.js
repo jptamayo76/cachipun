@@ -5,6 +5,7 @@
 
 // CONSTANTES GLOBALES
 const iconoptions = ["far fa-hand-scissors fa-5x", "far fa-hand-paper fa-5x", "far fa-hand-rock fa-5x"];
+const VOLUMEN = 0.05;
 
 // VARIABLES GLOBALES
 var ciclo = 0;
@@ -17,7 +18,7 @@ function setMusic() {
     document.getElementById("Audio").setAttribute("src", randomAudio);
 
     /* Se ajusta volumen */
-    document.getElementById("Audio").volume = 0.02;
+    document.getElementById("Audio").volume = VOLUMEN;
 }
 
 function ronda() {
@@ -173,7 +174,7 @@ $(function () {
             document.getElementById("Audio").volume = 0.00;
         } else {
             /* Se ajusta volumen */
-            document.getElementById("Audio").volume = 0.02;
+            document.getElementById("Audio").volume = VOLUMEN;
         }
     });
 });
